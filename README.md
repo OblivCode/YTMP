@@ -7,7 +7,7 @@ A standalone discord rich presence for youtube music.
 
 # Running source
 1) Download the source folder
-2) In terminal, run: py install -r requirement.txt
+2) In terminal, run: py install -r requirements.txt
 3) In terminal, run: py init.py
 
 
