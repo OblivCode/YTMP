@@ -5,9 +5,8 @@ from web import WebEngine
 from presence import Update
 import sys
 
-
+#runs whenever we get a response from scrap.js
 def callback(response):
-    #download image
     if response["ad"]:
         text = "Ad break"
         page_url = None
