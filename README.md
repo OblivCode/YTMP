@@ -7,7 +7,9 @@ A standalone discord rich presence for youtube music.
 
 # Building source
 1) Download the source folder
-2) In terminal, run: py init.py
+2) In terminal, run; py install -r requirement.txt
+3) In terminal, run: py init.py
+
 
 # Notices
 Logins will not be saved so if you do login then you will need to re-login every time you restart the app. Might find a workaround later.
