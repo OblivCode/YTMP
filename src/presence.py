@@ -1,6 +1,6 @@
 from pypresence import Presence
 
-client_id = '750690488809422933'  # Fake ID, put your real one here
+client_id = 'XXXXX'  # Fake ID, put your real one here
 RPC = Presence(client_id)  # Initialize the client class
 RPC.connect()
 
