@@ -15,21 +15,21 @@ class WebEngine(QMainWindow):
         self.setGeometry(0, 0, int(screen_width * 0.75), int(screen_height * 0.75))
         self.base_url = f"https://music.youtube.com/"
         
-        self.view = QWebEngineView()
+        
 
         self.profile = QWebEngineProfile()
         self.profile.setPersistentCookiesPolicy(QWebEngineProfile.PersistentCookiesPolicy.ForcePersistentCookies)
+        
         self.profile.setPersistentStoragePath(STORAGE_DIR)
         self.profile.setCachePath(CACHE_DIR)
         self.profile.setHttpCacheType(QWebEngineProfile.HttpCacheType.DiskHttpCache)
         self.profile.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0")
-        self.profile.blockSignals(False)
-
-        self.page = QWebEnginePage(self.profile)
-        self.page.setUrl(QUrl(self.base_url))
+        
+        self.view = QWebEngineView()
+        self.page = QWebEnginePage(self.profile, self.view)
         self.view.setPage(self.page)
+        self.page.load(QUrl(self.base_url))
         self.setCentralWidget(self.view)
-
         self.page.event = self.onEvent
 
         self.timer = QTimer(self) 
@@ -53,12 +53,20 @@ class WebEngine(QMainWindow):
         if response:
             self.callback(response)
                 
+    def closeEvent(self, e):
+        print('CLOSE')
+        c = self.page.profile().cookieStore().children()
+        self.FlushCookies()
+        print("cookies", len(c))
+        for i in c:
+            print(i)
+            print(type(i))
 
     def onEvent(self, e):
         self.FlushCookies()
         return True
     def FlushCookies(self):
         cookie = QNetworkCookie()
-        self.profile.cookieStore().deleteCookie(cookie)
+        self.page.profile().cookieStore().deleteCookie(cookie)
         
 
