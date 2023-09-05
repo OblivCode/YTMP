@@ -7,6 +7,7 @@ import sys
 
 #runs whenever we get a response from scrap.js
 def callback(response):
+    print("Presence callback")
     page_url = None
     image_url = None
     buttons = None
