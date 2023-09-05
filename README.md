@@ -11,5 +11,5 @@ A standalone discord rich presence for youtube music.
 3) In terminal, run: py init.py
 
 
-# Notices
-Logins will not be saved so if you do login then you will need to re-login every time you restart the app. Might find a workaround later.
+# Updates
+Logins will now be saved as cookie saves are implemented.
